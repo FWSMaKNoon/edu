@@ -25,13 +25,7 @@ function Search() {
     const [searchResult, setSearchResult] = useState([]);
 
     //Fetch List Item
-    useEffect(() => {
-        fetch('https://6872aaf6c75558e27352747b.mockapi.io/api/products')
-            .then((res) => res.json())
-            .then((res) => {
-                setProducts(res);
-            });
-    }, []);
+    useEffect(() => {}, []);
 
     //Loading delay
     useEffect(() => {
@@ -44,16 +38,20 @@ function Search() {
         setLoading(true);
         //Filter product
         const timer = setTimeout(() => {
-            const filtered = products.filter(
-                (product) =>
-                    product.title.toLowerCase().includes(searchValue.toLowerCase()) ||
-                    product.category.toLowerCase().includes(searchValue.toLowerCase()),
-            );
-            setSearchResult(filtered);
-            setLoading(false);
+            fetch('https://6872aaf6c75558e27352747b.mockapi.io/api/products')
+                .then((res) => res.json())
+                .then((res) => {
+                    const filtered = res.filter(
+                        (product) =>
+                            product.title.toLowerCase().includes(searchValue.toLowerCase()) ||
+                            product.category.toLowerCase().includes(searchValue.toLowerCase()),
+                    );
+                    setSearchResult(filtered);
+                    setLoading(false);
+                });
         }, 300);
         return () => clearTimeout(timer);
-    }, [searchValue, products]);
+    }, [searchValue]);
 
     //Update
     useEffect(() => {
