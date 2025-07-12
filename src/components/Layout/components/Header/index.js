@@ -141,6 +141,7 @@ function Header() {
                                             <div className={cx('header__hotline-text')}>Hotline</div>
                                         </div>
                                     </div>
+                                    {console.log(cx('header__hotline-contact', 'hide-on-mobile-tablet'))}
 
                                     {/* Hotline cart */}
                                     <CartItem items={CART_ITEMS}>

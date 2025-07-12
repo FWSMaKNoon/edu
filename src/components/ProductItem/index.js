@@ -22,7 +22,6 @@ function ProductItem({ data, onClick }) {
                         </span>
                     </div>
                 </div>
-                <Button>ád</Button>
             </div>
         </div>
     );
