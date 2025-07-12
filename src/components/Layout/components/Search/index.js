@@ -4,10 +4,9 @@ import classNames from 'classnames/bind';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 import styles from './Search.module.scss';
-import { faCircleXmark, faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons';
+import { faCircleXmark, faMagnifyingGlass, faSpinner } from '@fortawesome/free-solid-svg-icons';
 
 import { Wrapper as PopperWrapper } from '~/components/Popper';
-import { setSuggestions } from '~/api/suggestions';
 import ListItem from '~/components/ListItem';
 import Tippy from '@tippyjs/react/headless';
 import Button from '~/components/Button';
@@ -18,6 +17,7 @@ function Search() {
     const [products, setProducts] = useState([]);
     const [searchValue, setSearchValue] = useState('');
     const [showResult, setShowResult] = useState(true);
+    const [loading, setLoading] = useState(false);
 
     const inputRef = useRef();
     const location = useLocation();
@@ -33,14 +33,26 @@ function Search() {
             });
     }, []);
 
-    //Filter product
+    //Loading delay
     useEffect(() => {
-        const filtered = products.filter(
-            (product) =>
-                product.title.toLowerCase().includes(searchValue.toLowerCase()) ||
-                product.category.toLowerCase().includes(searchValue.toLowerCase()),
-        );
-        setSearchResult(filtered);
+        if (searchValue.trim() === '') {
+            setSearchResult([]);
+            setLoading(false);
+            return;
+        }
+
+        setLoading(true);
+        //Filter product
+        const timer = setTimeout(() => {
+            const filtered = products.filter(
+                (product) =>
+                    product.title.toLowerCase().includes(searchValue.toLowerCase()) ||
+                    product.category.toLowerCase().includes(searchValue.toLowerCase()),
+            );
+            setSearchResult(filtered);
+            setLoading(false);
+        }, 300);
+        return () => clearTimeout(timer);
     }, [searchValue, products]);
 
     //Update
@@ -52,13 +64,6 @@ function Search() {
 
     const handleHideResult = () => {
         setShowResult(false);
-    };
-
-    const getSuggestions = () => {
-        const userId = 1;
-        setSuggestions(userId).then((data) => {
-            setSuggestions(data);
-        });
     };
     return (
         <Tippy
@@ -87,9 +92,9 @@ function Search() {
                     onChange={(e) => setSearchValue(e.target.value)}
                     onFocus={() => setShowResult(true)}
                 />
-                {!!searchValue && (
+                {!!searchValue && !loading && (
                     <button
-                        className={cx('header-search-clear')}
+                        className={cx('clear')}
                         onClick={() => {
                             inputRef.current.focus();
                             setSearchValue('');
@@ -98,11 +103,9 @@ function Search() {
                         <FontAwesomeIcon icon={faCircleXmark} />
                     </button>
                 )}
-                {/* <button className={cx('header-search-loading')}>
-                        <FontAwesomeIcon icon={faSpinner} />
-                    </button> */}
+                {loading && <FontAwesomeIcon className={cx('loading')} icon={faSpinner} />}
 
-                <Button onClick={getSuggestions} primary className={cx('header__search-btn')}>
+                <Button primary className={cx('header__search-btn')}>
                     <FontAwesomeIcon className={cx('header__search-btn-icon')} icon={faMagnifyingGlass} />
                 </Button>
             </div>

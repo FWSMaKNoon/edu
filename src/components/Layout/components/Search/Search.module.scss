@@ -58,12 +58,25 @@
     }
 }
 
-.header-search-clear,
-.header-search-loading {
+.clear,
+.loading {
     position: absolute;
     font-size: 1.7rem;
     right: 80px;
     top: 50%;
     transform: translateY(-50%);
     color: rgba(22, 24, 35, 0.34);
+}
+
+.loading {
+    animation: spinner 1s infinite;
+}
+
+@keyframes spinner {
+    from {
+        transform: translateY(-50%) rotate(0);
+    }
+    to {
+        transform: translateY(-50%) rotate(360deg);
+    }
 }

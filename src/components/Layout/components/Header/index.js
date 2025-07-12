@@ -183,7 +183,7 @@ function Header() {
                     <div className="grid wide">
                         <ul className={cx('header__footer-list')}>
                             <li className={cx('header__footer-item')}>
-                                <a href="./shop.html" className={cx('header__footer-item-link')}>
+                                <a href="/shop" className={cx('header__footer-item-link')}>
                                     <FontAwesomeIcon className={cx('header__footer-item-icon')} icon={faBars} />
                                     Danh mục sản phẩm
                                 </a>
@@ -203,7 +203,7 @@ function Header() {
                             </li>
 
                             <li className={cx('header__footer-item', 'header__footer-item-has-hover')}>
-                                <a href="./upload" className={cx('header__footer-item-link')}>
+                                <a href="/shop" className={cx('header__footer-item-link')}>
                                     GIÀY
                                 </a>
                                 <ul className={cx('header__footer-sub')}>
@@ -235,7 +235,7 @@ function Header() {
                                     {['T-SHIRT', 'SƠ MI', 'ÁO KHOÁC', 'POLO', 'SWEATER', 'HOODIE', 'JACKET'].map(
                                         (item, index) => (
                                             <li key={index} className={cx('header__footer-sub-item')}>
-                                                <a href="./shop.html" className={cx('header__footer-sub-item-link')}>
+                                                <a href="/shop" className={cx('header__footer-sub-item-link')}>
                                                     {item}
                                                 </a>
                                             </li>
@@ -245,13 +245,13 @@ function Header() {
                             </li>
 
                             <li className={cx('header__footer-item', 'header__footer-item-has-hover')}>
-                                <a href="./shop.html" className={cx('header__footer-item-link')}>
+                                <a href="/shop" className={cx('header__footer-item-link')}>
                                     BEYOURSELF
                                 </a>
                                 <ul className={cx('header__footer-sub')}>
                                     {['T-SHIRT', 'POLO', 'QUẦN', 'HOODIE', 'VARSITY'].map((item, index) => (
                                         <li key={index} className={cx('header__footer-sub-item')}>
-                                            <a href="./shop.html" className={cx('header__footer-sub-item-link')}>
+                                            <a href="/shop" className={cx('header__footer-sub-item-link')}>
                                                 {item}
                                             </a>
                                         </li>
@@ -260,13 +260,13 @@ function Header() {
                             </li>
 
                             <li className={cx('header__footer-item', 'header__footer-item-has-hover')}>
-                                <a href="./shop.html" className={cx('header__footer-item-link')}>
+                                <a href="/shop" className={cx('header__footer-item-link')}>
                                     DÉP
                                 </a>
                                 <ul className={cx('header__footer-sub')}>
                                     {['ADIDAS', 'NIKE', 'NEW BALANCE', 'MLB'].map((item, index) => (
                                         <li key={index} className={cx('header__footer-sub-item')}>
-                                            <a href="./shop.html" className={cx('header__footer-sub-item-link')}>
+                                            <a href="/shop" className={cx('header__footer-sub-item-link')}>
                                                 {item}
                                             </a>
                                         </li>
@@ -275,13 +275,13 @@ function Header() {
                             </li>
 
                             <li className={cx('header__footer-item')}>
-                                <a href="./shop.html" className={cx('header__footer-item-link')}>
+                                <a href="/shop" className={cx('header__footer-item-link')}>
                                     TIN TỨC
                                 </a>
                             </li>
 
                             <li className={cx('header__footer-item')}>
-                                <a href="./shop.html" className={cx('header__footer-item-link')}>
+                                <a href="/shop" className={cx('header__footer-item-link')}>
                                     GIỚI THIỆU
                                 </a>
                             </li>
