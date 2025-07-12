@@ -1,0 +1,192 @@
+{
+    "products": [
+        {
+            "id": 1,
+            "title": "Áo T-Shirt",
+            "price": "690000đ",
+            "description": "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Totam laborum aut explicabo molestias voluptas, eum nulla doloremque laboriosam. Accusantium omnis illum nulla architecto doloribus.",
+            "colors": [
+                {
+                    "name": "Xanh mạ",
+                    "mainImage": "assets/img/product1_green_1.jpg",
+                    "thumbnails": [
+                        "assets/img/product1_green_2.jpg",
+                        "assets/img/product1_green_3.jpg",
+                        "assets/img/product1_green_4.jpg"
+                    ],
+                    "sizes": ["S", "M", "L", "XL", "XXL"]
+                },
+                {
+                    "name": "Vàng",
+                    "mainImage": "assets/img/product1_yellow_1.jpg",
+                    "thumbnails": [
+                        "assets/img/product1_yellow_2.jpg",
+                        "assets/img/product1_yellow_3.jpg",
+                        "assets/img/product1_yellow_4.jpg"
+                    ],
+                    "sizes": ["S", "M", "L", "XL", "XXL"]
+                },
+                {
+                    "name": "Đỏ",
+                    "mainImage": "assets/img/product1_red_1.jpg",
+                    "thumbnails": [
+                        "assets/img/product1_red_2.jpg",
+                        "assets/img/product1_red_3.jpg",
+                        "assets/img/product1_red_4.jpg"
+                    ],
+                    "sizes": ["S", "M", "L", "XL", "XXL"]
+                },
+                {
+                    "name": "Trắng",
+                    "mainImage": "assets/img/product1_white_1.jpg",
+                    "thumbnails": [
+                        "assets/img/product1_white_2.jpg",
+                        "assets/img/product1_white_3.jpg",
+                        "assets/img/product1_white_4.jpg"
+                    ],
+                    "sizes": ["S", "L"]
+                },
+                {
+                    "name": "Đỏ Nâu",
+                    "mainImage": "assets/img/product1_maroon_1.jpg",
+                    "thumbnails": [
+                        "assets/img/product1_maroon_2.jpg",
+                        "assets/img/product1_maroon_3.jpg",
+                        "assets/img/product1_maroon_4.jpg"
+                    ],
+                    "sizes": ["M", "L", "XL"]
+                }
+            ]
+        },
+        {
+            "id": 2,
+            "title": "Sweater",
+            "price": "500000đ",
+            "description": "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Totam laborum aut explicabo molestias voluptas, eum nulla doloremque laboriosam. Accusantium omnis illum nulla architecto doloribus.",
+            "colors": [
+                {
+                    "name": "Xanh dương",
+                    "mainImage": "assets/img/product2_blue_1.jpg",
+                    "thumbnails": [
+                        "assets/img/product2_blue_2.jpg",
+                        "assets/img/product2_blue_3.jpg",
+                        "assets/img/product2_blue_4.jpg"
+                    ],
+                    "sizes": ["M", "L", "XL"]
+                }
+            ]
+        },
+        {
+            "id": 3,
+            "title": "Áo Polo",
+            "price": "400000đ",
+            "description": "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Totam laborum aut explicabo molestias voluptas, eum nulla doloremque laboriosam. Accusantium omnis illum nulla architecto doloribus.",
+            "colors": [
+                {
+                    "name": "Xám",
+                    "mainImage": "assets/img/product3_grey_1.jpg",
+                    "thumbnails": [],
+                    "sizes": ["S", "M", "L", "XL", "XXL"]
+                }
+            ]
+        },
+        {
+            "id": 4,
+            "title": "Áo Polo",
+            "price": "400000đ",
+            "description": "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Totam laborum aut explicabo molestias voluptas, eum nulla doloremque laboriosam. Accusantium omnis illum nulla architecto doloribus.",
+            "colors": [
+                {
+                    "name": "Green",
+                    "mainImage": "assets/img/product4_green_1.jpg",
+                    "thumbnails": [],
+                    "sizes": ["S", "M", "L", "XL", "XXL"]
+                }
+            ]
+        },
+        {
+            "id": 5,
+            "title": "Áo Sơ mi",
+            "price": "600000đ",
+            "description": "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Totam laborum aut explicabo molestias voluptas, eum nulla doloremque laboriosam. Accusantium omnis illum nulla architecto doloribus.",
+            "colors": [
+                {
+                    "name": "Đen",
+                    "mainImage": "assets/img/product5_black_1.jpg",
+                    "thumbnails": [],
+                    "sizes": ["S", "M", "L", "XL", "XXL"]
+                }
+            ]
+        },
+        {
+            "id": 6,
+            "title": "Áo T-Shirt",
+            "price": "690000đ",
+            "description": "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Totam laborum aut explicabo molestias voluptas, eum nulla doloremque laboriosam. Accusantium omnis illum nulla architecto doloribus.",
+            "colors": [
+                {
+                    "name": "Nâu",
+                    "mainImage": "assets/img/product6_brown_1.jpg",
+                    "thumbnails": [],
+                    "sizes": ["S", "M", "L", "XL", "XXL"]
+                }
+            ]
+        },
+        {
+            "id": 7,
+            "title": "Áo Polo",
+            "price": "690000đ",
+            "description": "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Totam laborum aut explicabo molestias voluptas, eum nulla doloremque laboriosam. Accusantium omnis illum nulla architecto doloribus.",
+            "colors": [
+                {
+                    "name": "Xanh dương",
+                    "mainImage": "assets/img/product7_blue_1.jpg",
+                    "thumbnails": [],
+                    "sizes": ["S", "M", "L", "XL", "XXL"]
+                }
+            ]
+        },
+        {
+            "id": 8,
+            "title": "T-Shirt",
+            "price": "690000đ",
+            "description": "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Totam laborum aut explicabo molestias voluptas, eum nulla doloremque laboriosam. Accusantium omnis illum nulla architecto doloribus.",
+            "colors": [
+                {
+                    "name": "Xanh lá",
+                    "mainImage": "assets/img/product8_green_1.jpg",
+                    "thumbnails": [],
+                    "sizes": ["S", "M", "L", "XL", "XXL"]
+                }
+            ]
+        },
+        {
+            "id": 9,
+            "title": "T-Shirt",
+            "price": "690000đ",
+            "description": "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Totam laborum aut explicabo molestias voluptas, eum nulla doloremque laboriosam. Accusantium omnis illum nulla architecto doloribus.",
+            "colors": [
+                {
+                    "name": "Xanh lá",
+                    "mainImage": "assets/img/product8_green_1.jpg",
+                    "thumbnails": [],
+                    "sizes": ["S", "M", "L", "XL", "XXL"]
+                }
+            ]
+        },
+        {
+            "id": 10,
+            "title": "T-Shirt",
+            "price": "690000đ",
+            "description": "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Totam laborum aut explicabo molestias voluptas, eum nulla doloremque laboriosam. Accusantium omnis illum nulla architecto doloribus.",
+            "colors": [
+                {
+                    "name": "Xanh lá",
+                    "mainImage": "assets/img/product8_green_1.jpg",
+                    "thumbnails": [],
+                    "sizes": ["S", "M", "L", "XL", "XXL"]
+                }
+            ]
+        }
+    ]
+}
