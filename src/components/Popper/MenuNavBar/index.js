@@ -8,7 +8,6 @@ import images from '~/assets/imgs';
 import Header from './Header';
 import MenuItemsNavBar from './MenuItemsNavBar';
 import Search from '~/components/Layout/components/Search';
-import Button from '~/components/Button';
 
 const cx = classNames.bind(styles);
 
