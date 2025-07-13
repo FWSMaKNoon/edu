@@ -1,0 +1,15 @@
+@import '../Shop/Shop.module.scss';
+
+.remove-fav-btn {
+    background: transparent;
+    border: none;
+    color: #ff4d4f;
+    cursor: pointer;
+    margin-top: 8px;
+    font-size: 1.4rem;
+    transition: all 0.3s;
+}
+
+.remove-fav-btn:hover {
+    color: #ff1a1a;
+}

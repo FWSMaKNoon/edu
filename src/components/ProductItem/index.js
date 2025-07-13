@@ -1,6 +1,5 @@
 import classNames from 'classnames/bind';
 import styles from '~/pages/Home/Home.module.scss';
-import Button from '~/components/Button';
 
 const cx = classNames.bind(styles);
 function ProductItem({ data, onClick }) {
@@ -13,12 +12,13 @@ function ProductItem({ data, onClick }) {
                 ></div>
                 <div className={cx('section-product-item__info')}>
                     <div className={cx('section-product-item__name')}>{data.title}</div>
+                    <div className={cx('section__short-desc')}>{data.longDesc}</div>
                     <div className={cx('section-product-item__price')}>
                         <span className={cx('section-product-item__price-curent')}>
-                            {data.price.toLocaleString('vi-VN')}₫
+                            {data.price.toLocaleString('vi-VN')}đ
                         </span>
                         <span className={cx('section-product-item__price-old')}>
-                            {data.price.toLocaleString('vi-VN')}₫
+                            {data.price.toLocaleString('vi-VN')}đ
                         </span>
                     </div>
                 </div>

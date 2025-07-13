@@ -13,15 +13,13 @@ import Button from '~/components/Button';
 
 const cx = classNames.bind(styles);
 
-function Search() {
-    const [products, setProducts] = useState([]);
+function Search({ inline = false }) {
     const [searchValue, setSearchValue] = useState('');
     const [showResult, setShowResult] = useState(true);
     const [loading, setLoading] = useState(false);
 
     const inputRef = useRef();
     const location = useLocation();
-
     const [searchResult, setSearchResult] = useState([]);
 
     //Fetch List Item
@@ -66,7 +64,7 @@ function Search() {
     return (
         <Tippy
             interactive
-            placement="bottom"
+            placement="bottom-start"
             visible={showResult && searchValue.trim() !== '' && searchResult.length > 0}
             render={(attrs) => (
                 <div className={cx('search-result')} tabIndex="-1" {...attrs}>
@@ -80,7 +78,7 @@ function Search() {
             )}
             onClickOutside={handleHideResult}
         >
-            <div className={cx('header__search', 'hide-on-mobile-tablet')}>
+            <div className={cx('header__search', { 'hide-on-mobile-tablet': !inline, 'search-inline': inline })}>
                 <input
                     ref={inputRef}
                     value={searchValue}
@@ -103,7 +101,7 @@ function Search() {
                 )}
                 {loading && <FontAwesomeIcon className={cx('loading')} icon={faSpinner} />}
 
-                <Button primary className={cx('header__search-btn')}>
+                <Button primary className={cx('search-btn')}>
                     <FontAwesomeIcon className={cx('header__search-btn-icon')} icon={faMagnifyingGlass} />
                 </Button>
             </div>

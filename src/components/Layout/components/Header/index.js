@@ -100,7 +100,7 @@ function Header() {
                                     </div>
                                 </li>
                                 <li className={cx('header__navbar-item', 'header__navbar--has-hover')}>
-                                    <a href="https://google.com" className={cx('header__navbar-item-link')}>
+                                    <a href="/shop" className={cx('header__navbar-item-link')}>
                                         <FontAwesomeIcon className={cx('header__navbar-icon')} icon={faLocationDot} />
                                         Hệ thống cửa hàng
                                     </a>
@@ -141,7 +141,6 @@ function Header() {
                                             <div className={cx('header__hotline-text')}>Hotline</div>
                                         </div>
                                     </div>
-                                    {console.log(cx('header__hotline-contact', 'hide-on-mobile-tablet'))}
 
                                     {/* Hotline cart */}
                                     <CartItem items={CART_ITEMS}>
@@ -190,7 +189,7 @@ function Header() {
                                 </a>
                                 <ul className={cx('header__footer-sub')} style={{ width: '100%' }}>
                                     <li className={cx('header__footer-sub-item')}>
-                                        <a href="./cart.html" className={cx('header__footer-sub-item-link')}>
+                                        <a href="shop" className={cx('header__footer-sub-item-link')}>
                                             KO
                                         </a>
                                     </li>
@@ -284,6 +283,12 @@ function Header() {
                             <li className={cx('header__footer-item')}>
                                 <a href="/shop" className={cx('header__footer-item-link')}>
                                     GIỚI THIỆU
+                                </a>
+                            </li>
+
+                            <li className={cx('header__footer-item')}>
+                                <a href="/favorites" className={cx('header__footer-item-link')}>
+                                    YÊU THÍCH
                                 </a>
                             </li>
                         </ul>

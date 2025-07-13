@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import classNames from 'classnames/bind';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faAngleRight, faBars, faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons';
@@ -7,6 +7,7 @@ import styles from './MenuNavBar.module.scss';
 import images from '~/assets/imgs';
 import Header from './Header';
 import MenuItemsNavBar from './MenuItemsNavBar';
+import Search from '~/components/Layout/components/Search';
 import Button from '~/components/Button';
 
 const cx = classNames.bind(styles);
@@ -19,7 +20,7 @@ const MENU_NAVBAR = [
     {
         icon: <FontAwesomeIcon icon={faAngleRight} />,
         title: 'GIÀY',
-        to: '/following',
+        to: '/shop',
         subItems: {
             title: 'GIÀY',
             data: [
@@ -38,7 +39,7 @@ const MENU_NAVBAR = [
     {
         icon: <FontAwesomeIcon icon={faAngleRight} />,
         title: 'ÁO',
-        to: '/upload',
+        to: '/shop',
         subItems: {
             title: 'ÁO',
             data: [
@@ -55,7 +56,7 @@ const MENU_NAVBAR = [
     {
         icon: <FontAwesomeIcon icon={faAngleRight} />,
         title: 'BEYOURSELF',
-        to: '/profile',
+        to: '/shop',
         subItems: {
             title: 'BEYOURSELF',
             data: [
@@ -75,6 +76,11 @@ const MENU_NAVBAR = [
             data: [{ title: 'ADIDAS' }, { title: 'NIKE' }, { title: 'NEW BALANCE' }, { title: 'MLB' }],
         },
     },
+    {
+        icon: <FontAwesomeIcon icon={faAngleRight} />,
+        title: 'YÊU THÍCH',
+        to: '/favorites',
+    },
 ];
 
 function MenuNavBar() {
@@ -82,6 +88,18 @@ function MenuNavBar() {
     const [isOpen, setIsOpen] = useState(false);
     const [history, setHistory] = useState([{ data: MENU_NAVBAR }]);
     const currentMenu = history[history.length - 1];
+
+    useEffect(() => {
+        //Open Overlay
+        if (showMenuMobile) {
+            document.body.style.overflow = 'hidden';
+        } else {
+            document.body.style.overflow = 'auto';
+        }
+        return () => {
+            document.body.style.overflow = 'auto';
+        };
+    }, [showMenuMobile]);
 
     const toggleMenuMobile = () => {
         if (!showMenuMobile) {
@@ -142,17 +160,7 @@ function MenuNavBar() {
                         </div>
 
                         {/* Search */}
-                        <div className={cx('menu-mobile-tablet__search')}>
-                            <input
-                                type="text"
-                                className={cx('menu-mobile-tablet__search-input')}
-                                placeholder="Tìm kiếm..."
-                            />
-
-                            <Button className={cx('menu-mobile-tablet__search-btn')}>
-                                <FontAwesomeIcon icon={faMagnifyingGlass} />
-                            </Button>
-                        </div>
+                        <Search inline />
 
                         {/*OnBack*/}
                         {history.length > 1 && (

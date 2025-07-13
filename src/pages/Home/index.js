@@ -29,12 +29,10 @@ function Home() {
                 <section className={cx('section__home-1')}>
                     <div className={cx('grid', 'wide')}>
                         <div className={cx('row')}>
-                            <div className={cx('l-12', 'm-12', 'c-12')}>
+                            <div className={cx('col', 'l-12', 'm-12', 'c-12')}>
                                 <div className={cx('title-1')}>
                                     <div className={cx('bg')}></div>
-                                    <p href="./shop.html" className={cx('title-1-link')}>
-                                        NEW ARRIVALS
-                                    </p>
+                                    <p className={cx('title-1-link')}>NEW ARRIVALS</p>
                                     <div className={cx('bg')}></div>
                                 </div>
                             </div>
@@ -60,12 +58,15 @@ function Home() {
                                                         <div className={cx('section-product-item__name')}>
                                                             {product.title}
                                                         </div>
+                                                        <div className={cx('section__short-desc')}>
+                                                            {product.shortDesc}
+                                                        </div>
                                                         <div className={cx('section-product-item__price')}>
                                                             <span className={cx('section-product-item__price-curent')}>
-                                                                {product.price.toLocaleString('vi-VN')}₫
+                                                                {product.price.toLocaleString('vi-VN')}đ
                                                             </span>
                                                             <span className={cx('section-product-item__price-old')}>
-                                                                {product.price.toLocaleString('vi-VN')}₫
+                                                                {product.price.toLocaleString('vi-VN')}đ
                                                             </span>
                                                         </div>
                                                     </div>
@@ -84,7 +85,7 @@ function Home() {
                     <section key={num} className={cx(`section__home-${num}`)}>
                         <div className={cx('grid', 'wide')}>
                             <div className={cx('title-product')}>
-                                <a href="./shop.html" className={cx('title-product-link')}>
+                                <a href="/shop" className={cx('title-product-link')}>
                                     {getTitle(num)}
                                 </a>
                                 <ul className={cx('title-product-menu')}>

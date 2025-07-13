@@ -1,5 +1,6 @@
 import { Fragment } from 'react';
 import { BrowserRouter as Router, Routes, Route, UNSAFE_FutureConfig } from 'react-router-dom';
+import { ToastContainer } from 'react-toastify';
 
 import { publicRoutes } from '~/routes';
 import { DefaultLayout } from '~/components/Layout';
@@ -31,6 +32,17 @@ function App() {
                         );
                     })}
                 </Routes>
+                <ToastContainer
+                    position="top-right"
+                    autoClose={3000}
+                    hideProgressBar={false}
+                    newestOnTop={false}
+                    closeOnClick
+                    pauseOnFocusLoss
+                    draggable
+                    pauseOnHover
+                    theme="colored"
+                />
             </div>
         </Router>
     );
