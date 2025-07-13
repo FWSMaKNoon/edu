@@ -38,5 +38,6 @@ npm start
 ### 1️⃣ Clone project:
 
 ```bash
-git clone https://github.com/yourusername/fashion-store.git
+git clone https://github.com/FWSMaKNoon/ShopReact
+Render Dashboard: https://shopreact-p9l5.onrender.com
 ```
