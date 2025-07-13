@@ -9,6 +9,7 @@ import { useEffect, useState } from 'react';
 import { addFavorite, removeFavorite, isFavorite } from '~/ultis/favoriteUtils';
 
 import { HeartIcon } from '~/components/Layout/components/Icons';
+import { Link } from 'react-router-dom';
 
 const cx = classNames.bind(styles);
 
@@ -55,6 +56,9 @@ function ProductDetailModal({ data, onClose }) {
                         >
                             <HeartIcon />
                         </button>
+                    </div>
+                    <div className={cx('btn')}>
+                        <Link to={`/detail/products/${data.id}`}>Xem chi tiết</Link>
                     </div>
                 </div>
             </div>

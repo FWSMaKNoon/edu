@@ -8,7 +8,7 @@ import styles from './Detail.module.scss';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faAngleRight } from '@fortawesome/free-solid-svg-icons';
 import { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import Button from '~/components/Button';
 import { HeartIcon } from '~/components/Layout/components/Icons';
 
@@ -140,7 +140,8 @@ function Detail() {
                                 )}
 
                                 <div className={cx('btn')}>
-                                    <Button className={cx('btn-buy')}>Thêm vào giỏ</Button>
+                                    <button className={cx('btn-buy')}>Thêm vào giỏ</button>
+
                                     {/* Nút yêu thích */}
                                     <button
                                         className={cx('fav-btn', { active: isFavorite(product.id) })}
@@ -158,6 +159,9 @@ function Detail() {
                                         <HeartIcon />
                                     </button>
                                 </div>
+                                <Link to={`/shop`} className={cx('btn-buy')}>
+                                    Qua về cửa hàng
+                                </Link>
 
                                 <div className={cx('product-policy')}>
                                     <p>Nhận hàng trong 24-72h</p>

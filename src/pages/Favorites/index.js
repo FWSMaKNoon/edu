@@ -37,7 +37,7 @@ function Favorites() {
                     {products.map((product) => (
                         <div key={product.id} className="col l-3 m-4 c-6">
                             <div className={cx('section-product-item')}>
-                                <Link to={`/detail/${product.id}`}>
+                                <Link to={`/detail/products/${product.id}`}>
                                     <div
                                         className={cx('section-product-item__img')}
                                         style={{ backgroundImage: `url(${product.image})` }}

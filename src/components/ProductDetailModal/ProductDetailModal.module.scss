@@ -100,6 +100,22 @@
     }
 }
 
+.btn {
+    text-align: center;
+    background-color: #252525;
+    margin-top: 8px;
+    padding: 8px;
+    color: var(--white-color);
+    font-size: 1.4rem;
+    border-radius: 4px;
+    &:hover {
+        background-color: #bd0029;
+    }
+    a {
+        color: var(--white-color);
+    }
+}
+
 /*Mobile and Tablet*/
 @media (max-width: 63.9375em) {
 }
