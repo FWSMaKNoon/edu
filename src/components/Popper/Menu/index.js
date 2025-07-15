@@ -8,6 +8,7 @@ import { Wrapper as PopperWrapper } from '~/components/Popper';
 import styles from './Menu.module.scss';
 import Image from '~/components/Images';
 import Button from '~/components/Button';
+import { Link } from 'react-router-dom';
 
 const cx = classNames.bind(styles);
 function Menu({ children }) {
@@ -23,7 +24,7 @@ function Menu({ children }) {
             render={(attrs) => (
                 <div tabIndex="-1" {...attrs}>
                     <PopperWrapper className={cx('menu-wrapper')}>
-                        <Button href="/" className={cx('user')}>
+                        <Link to="/" className={cx('user')}>
                             <div className={cx('user-avatar')}>
                                 <div className={cx('avatar-img')}>
                                     <Image
@@ -33,21 +34,21 @@ function Menu({ children }) {
                                 </div>
                             </div>
                             <div className={cx('user-name')}>Tài khoản của tôi</div>
-                        </Button>
+                        </Link>
                         <hr />
                         <div>
-                            <Button href="/" className={cx('menu-item')}>
+                            <Link to="/" className={cx('menu-item')}>
                                 Trang cá nhân
-                            </Button>
+                            </Link>
                         </div>
                         <hr />
                         <div>
-                            <Button href="/favorites" className={cx('menu-item')}>
+                            <Link to="/favorites" className={cx('menu-item')}>
                                 Yêu thích
-                            </Button>
-                            <Button href="/view" className={cx('menu-item')}>
+                            </Link>
+                            <Link to="/view" className={cx('menu-item')}>
                                 Đã xem
-                            </Button>
+                            </Link>
                         </div>
                         <hr />
                         <div>

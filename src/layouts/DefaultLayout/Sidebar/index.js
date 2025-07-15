@@ -2,6 +2,7 @@ import classNames from 'classnames/bind';
 
 import styles from './Sidebar.module.scss';
 import Button from '~/components/Button';
+import { Link } from 'react-router-dom';
 
 const cx = classNames.bind(styles);
 
@@ -21,9 +22,9 @@ function Sidebar() {
                                     Học lập trình cũng không là ngoại lệ.
                                 </p>
                                 <div>
-                                    <Button href="/" className={cx('btn')}>
+                                    <Link to="/" className={cx('btn')}>
                                         XEM THÀNH QUẢ
-                                    </Button>
+                                    </Link>
                                 </div>
                             </div>
                         </div>
