@@ -53,5 +53,5 @@ npm run build
 
 ```bash
 git clone https://github.com/FWSMaKNoon/edu
-Render Dashboard: https://education-25o3.onrender.com
+Render Dashboard: https://edu-f706.onrender.com
 ```
