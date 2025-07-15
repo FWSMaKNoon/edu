@@ -52,6 +52,6 @@ npm run build
 ### 1️⃣ Clone project:
 
 ```bash
-git clone https://github.com/FWSMaKNoon/ShopReact
-Render Dashboard: https://shopreact-p9l5.onrender.com
+git clone https://github.com/FWSMaKNoon/edu
+Render Dashboard: https://education-25o3.onrender.com
 ```
