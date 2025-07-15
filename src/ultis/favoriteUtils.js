@@ -14,3 +14,18 @@ export const removeFavorite = (id) => {
 };
 
 export const isFavorite = (id) => getFavorites().includes(id);
+
+export const toggleFavorite = (id) => {
+    const favs = getFavorites();
+    const isFav = favs.includes(id);
+    let updated;
+
+    if (isFav) {
+        updated = favs.filter((fid) => fid !== id);
+    } else {
+        updated = [...favs, id];
+    }
+
+    localStorage.setItem('favorites', JSON.stringify(updated));
+    return !isFav;
+};

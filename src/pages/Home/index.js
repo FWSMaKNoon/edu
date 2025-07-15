@@ -1,166 +1,173 @@
-import { useEffect, useState } from 'react';
+import { AuthContext } from '~/contexts/AuthContext';
+import { useContext } from 'react';
 import classNames from 'classnames/bind';
-
 import styles from './Home.module.scss';
-import images from '~/assets/imgs';
-import ProductItem from '~/components/ProductItem';
-import Image from '~/components/Images';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
+import { useEffect, useState } from 'react';
+import axios from 'axios';
 import ProductDetailModal from '~/components/ProductDetailModal';
+import { addFavorite, removeFavorite, getFavorites } from '~/ultis/favoriteUtils';
+import SuggestionMenu from '~/components/SuggestionMenu';
+import CourseCard from '~/components/CourseCard';
 
 const cx = classNames.bind(styles);
 
 function Home() {
-    const [products, setProduct] = useState([]);
-    const [selectedProduct, setSelectedProduct] = useState(null);
+    const { currentUser } = useContext(AuthContext);
+    const [selectedCourse, setSelectedCourse] = useState(null);
+    const [courses, setCourses] = useState([]);
+    const [loading, setLoading] = useState(true);
+    const [priceFilter, setPriceFilter] = useState('all');
+    const [favorites, setFavorites] = useState([]);
 
     useEffect(() => {
-        fetch('https://6872aaf6c75558e27352747b.mockapi.io/api/products')
-            .then((res) => res.json())
+        axios
+            .get('https://687557bc814c0dfa65384fe2.mockapi.io/api/Courses')
             .then((res) => {
-                setProduct(res);
+                setCourses(res.data);
+                setLoading(false);
+            })
+            .catch((err) => {
+                console.error('Fetch error:', err);
+                setLoading(false);
             });
     }, []);
 
+    const handlePriceFilterChange = (e) => {
+        setPriceFilter(e.target.value);
+    };
+
+    const handleToggleFavorite = (id) => {
+        const currentFavs = getFavorites();
+        const isFav = currentFavs.includes(id);
+
+        if (isFav) {
+            removeFavorite(id);
+            toast.info('Đã xóa khỏi yêu thích ❤️', { autoClose: 2000 });
+        } else {
+            addFavorite(id);
+            toast.success('Đã thêm vào yêu thích ❤️', { autoClose: 2000 });
+        }
+
+        // Update state từ localStorage mới nhất
+        setFavorites(getFavorites());
+    };
+
+    useEffect(() => {
+        // Lấy favorites từ localStorage khi load trang
+        setFavorites(getFavorites());
+    }, []);
+
+    const handleOpenDetail = (course) => {
+        // Thêm vào danh sách đã xem
+        const viewed = JSON.parse(localStorage.getItem('viewedCourses')) || [];
+        if (!viewed.includes(course.id)) {
+            viewed.push(course.id);
+            localStorage.setItem('viewedCourses', JSON.stringify(viewed));
+        }
+
+        setSelectedCourse(course);
+    };
+
+    const handleCloseDetail = () => {
+        setSelectedCourse(null);
+    };
+
+    const filteredCourses = courses.filter((course) => {
+        const price = course.price;
+        switch (priceFilter) {
+            case 'free':
+                return price === 0;
+            case 'under200':
+                return price > 0 && price < 200000;
+            case '200to500':
+                return price >= 200000 && price <= 500000;
+            case 'above500':
+                return price > 500000;
+            default:
+                return true;
+        }
+    });
+
+    if (loading) return <p>Đang tải...</p>;
+
     return (
         <div className={cx('app_container')}>
-            <section className={cx('sectione__banner-wrapper')}></section>
-            <div className={cx('app__content')}>
-                {/* Section NEW ARRIVALS */}
-                <section className={cx('section__home-1')}>
-                    <div className={cx('grid', 'wide')}>
-                        <div className={cx('row')}>
-                            <div className={cx('col', 'l-12', 'm-12', 'c-12')}>
-                                <div className={cx('title-1')}>
-                                    <div className={cx('bg')}></div>
-                                    <p className={cx('title-1-link')}>NEW ARRIVALS</p>
-                                    <div className={cx('bg')}></div>
-                                </div>
-                            </div>
+            <div className={cx('grid wide')}>
+                {/* Bộ lọc */}
+                <div className={cx('row')}>
+                    <div className={cx('col l-12 m-12 c-12')}>
+                        <div className={cx('filter')}>
+                            <span className={cx('filter-label')}>Lọc giá:</span>
+                            <select
+                                className={cx('select-input')}
+                                value={priceFilter}
+                                onChange={handlePriceFilterChange}
+                            >
+                                <option value="all">Tất cả</option>
+                                <option value="free">Miễn phí</option>
+                                <option value="under200">Dưới 200.000đ</option>
+                                <option value="200to500">200.000đ - 500.000đ</option>
+                                <option value="above500">Trên 500.000đ</option>
+                            </select>
                         </div>
                     </div>
+                </div>
 
-                    <div className={cx('grid', 'wide')}>
-                        <div className={cx('row')}>
-                            <div className={cx('col', 'l-12', 'm-12', 'c-12')}>
-                                <section className={cx('section-product')}>
-                                    <div className={cx('row')}>
-                                        {products.map((product, index) => (
-                                            <div key={index} className={cx('col', 'l-2-4', 'm-3', 'c-6')}>
-                                                <div
-                                                    onClick={() => setSelectedProduct(product)}
-                                                    className={cx('section-product-item')}
-                                                >
-                                                    <div
-                                                        className={cx('section-product-item__img')}
-                                                        style={{ backgroundImage: `url(${product.image})` }}
-                                                    ></div>
-                                                    <div className={cx('section-product-item__info')}>
-                                                        <div className={cx('section-product-item__name')}>
-                                                            {product.title}
-                                                        </div>
-                                                        <div className={cx('section__short-desc')}>
-                                                            {product.shortDesc}
-                                                        </div>
-                                                        <div className={cx('section-product-item__price')}>
-                                                            <span className={cx('section-product-item__price-curent')}>
-                                                                {product.price.toLocaleString('vi-VN')}đ
-                                                            </span>
-                                                            <span className={cx('section-product-item__price-old')}>
-                                                                {product.price.toLocaleString('vi-VN')}đ
-                                                            </span>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        ))}
-                                    </div>
-                                </section>
-                            </div>
+                {/* Danh sách khóa học */}
+                <div className={cx('row')}>
+                    {filteredCourses.map((course) => (
+                        <div key={course.id} className={cx('col', 'l-2-4', 'm-6', 'c-6')}>
+                            <CourseCard
+                                course={course}
+                                onOpenDetail={handleOpenDetail}
+                                onToggleFavorite={handleToggleFavorite}
+                                isFavorite={favorites.includes(course.id)}
+                            />
                         </div>
-                    </div>
-                </section>
+                    ))}
 
-                {/* Các Section còn lại */}
-                {[2, 3, 4, 5, 6, 7, 8].map((num) => (
-                    <section key={num} className={cx(`section__home-${num}`)}>
-                        <div className={cx('grid', 'wide')}>
-                            <div className={cx('title-product')}>
-                                <a href="/shop" className={cx('title-product-link')}>
-                                    {getTitle(num)}
-                                </a>
-                                <ul className={cx('title-product-menu')}>
-                                    {[
-                                        'NIKE',
-                                        'ADIDAS',
-                                        'MLB',
-                                        'GUCCI',
-                                        'BALENCIAGA',
-                                        'VANS',
-                                        'BE YOURSELF',
-                                        'KO',
-                                        'MC QUEEN',
-                                    ].map((brand, i) => (
-                                        <li key={i} className={cx('title-product-menu-item')}>
-                                            <a href="./shop.html" className={cx('title-product-menu-link')}>
-                                                {brand}
-                                            </a>
-                                        </li>
-                                    ))}
-                                </ul>
-                            </div>
-
-                            <div className={cx('row')}>
-                                <div className={cx('col', 'l-9', 'm-12', 'c-12')}>
-                                    <div className={cx('section__home-2-product')}>
-                                        <div className={cx('row', 'product-list')}>
-                                            {products.slice(0, 8).map((product) => (
-                                                <ProductItem
-                                                    key={product.id}
-                                                    data={product}
-                                                    onClick={() => setSelectedProduct(product)}
-                                                />
-                                            ))}
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div className={cx('col', 'l-3', 'm-0', 'c-0')}>
-                                    <div className={cx('section-product-banner')}>
-                                        <div className={cx('section-product-banner-img')}>
-                                            <Image src={images.banner_img} alt="" />
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+                    {filteredCourses.length === 0 && (
+                        <div className={cx('col l-12')}>
+                            <p style={{ textAlign: 'center', fontSize: '1.6rem', padding: '40px 0' }}>
+                                Không tìm thấy khoá học phù hợp.
+                            </p>
                         </div>
-                    </section>
-                ))}
+                    )}
+                </div>
+
+                {selectedCourse && (
+                    <ProductDetailModal
+                        data={selectedCourse}
+                        onClose={handleCloseDetail}
+                        favorites={favorites}
+                        onToggleFavorite={handleToggleFavorite}
+                    />
+                )}
             </div>
 
-            {selectedProduct && <ProductDetailModal data={selectedProduct} onClose={() => setSelectedProduct(null)} />}
+            {/* Toast hiển thị */}
+            <ToastContainer
+                position="top-right"
+                autoClose={3000}
+                hideProgressBar={false}
+                newestOnTop={false}
+                closeOnClick
+                pauseOnFocusLoss
+                draggable
+                pauseOnHover
+                theme="colored"
+            />
+            {currentUser ? (
+                <SuggestionMenu />
+            ) : (
+                <div className={cx('login-prompt')}>
+                    <p>Đăng nhập để xem gợi ý</p>
+                </div>
+            )}
         </div>
     );
 }
-
-function getTitle(sectionNumber) {
-    switch (sectionNumber) {
-        case 2:
-            return 'SẢN PHẨM HOT';
-        case 3:
-            return 'SẢN PHẨM BÁN CHẠY';
-        case 4:
-            return 'TOP GIẢM GIÁ';
-        case 5:
-            return 'GIÀY';
-        case 6:
-            return 'ÁO';
-        case 7:
-            return 'BEYOURSELF';
-        case 8:
-            return 'DÉP';
-        default:
-            return '';
-    }
-}
-
 export default Home;

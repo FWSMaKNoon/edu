@@ -1,11 +1,13 @@
 import { Fragment } from 'react';
-import { BrowserRouter as Router, Routes, Route, UNSAFE_FutureConfig } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { ToastContainer } from 'react-toastify';
+import { useState } from 'react';
 
 import { publicRoutes } from '~/routes';
-import { DefaultLayout } from '~/components/Layout';
+import { DefaultLayout } from '~/layouts';
 
 function App() {
+    const [currentUser, setCurrentUser] = useState(false);
     return (
         <Router
             future={{
@@ -24,8 +26,8 @@ function App() {
                                 key={index}
                                 path={route.path}
                                 element={
-                                    <Layout>
-                                        <Page />
+                                    <Layout currentUser={currentUser} setCurrentUser={setCurrentUser}>
+                                        <Page currentUser={currentUser} setCurrentUser={setCurrentUser} />
                                     </Layout>
                                 }
                             />

@@ -2,14 +2,13 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 70px;
-    height: 34px;
     border-radius: 2px;
     font-size: 1.6rem;
     font-family: inherit;
     user-select: none;
+
     + .wrapper {
-        margin-top: 4px;
+        margin-left: 10px;
     }
 
     &:hover {
@@ -23,48 +22,13 @@
 }
 
 .primary {
-    background-color: var(--primary-color);
-    color: var(--white-color);
-    margin-right: 2px;
-    &:active {
-        background-color: rgba(253, 173, 0, 0.8);
-    }
-}
-
-.medium {
-    --height: 30px;
-    width: 100%;
-    height: var(--height);
+    flex-shrink: 0;
+    padding: 9px 20px;
+    border-radius: 99px;
+    color: #fff;
+    background: linear-gradient(to right bottom, #ff8f26, #ff5117);
+    font-size: 1.4rem;
     font-weight: 600;
-    font-size: 1.4rem;
-    text-align: center;
-    display: block;
-    line-height: var(--height);
-}
-
-.login {
-    background: var(--primary-color);
-    color: var(--white-color);
-    margin-bottom: 5px;
-}
-
-.signin {
-    background-color: #e6e6e6;
-    color: var(--text-color);
-}
-
-.btnCart {
-    display: block;
-    width: 100%;
-    height: 30px;
-    background-color: #252525;
-    padding: 5px 0;
-    color: var(--white-color);
-    font-size: 1.4rem;
-    text-align: center;
-    font-weight: 300;
-
-    &:last-child {
-        background-color: #3d4356;
-    }
+    cursor: pointer;
+    transition: opacity 0.25s;
 }

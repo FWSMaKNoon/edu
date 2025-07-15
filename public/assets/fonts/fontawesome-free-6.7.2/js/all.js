@@ -4993,7 +4993,7 @@
     return prefix && icon;
   }
   function hasBeenReplaced(node) {
-    return node && node.classList && node.classList.contains && node.classList.contains(config.replacementClass);
+    return node && node.classList && node.classList. && node.classList.contains(config.replacementClass);
   }
   function getMutator() {
     if (config.autoReplaceSvg === true) {

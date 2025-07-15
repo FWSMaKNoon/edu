@@ -9,9 +9,10 @@
 }
 
 .img {
-    width: 50px;
-    height: 50px;
-    border-radius: 4px;
+    width: 3.2rem;
+    height: 3.2rem;
+    object-fit: cover;
+    border-radius: 50%;
 }
 
 .name {
@@ -19,4 +20,16 @@
     font-weight: 500;
     color: var(--text-color);
     padding-left: 10px;
+}
+
+/*Mobile and Tablet*/
+@media (max-width: 63.9375em) {
+    .img {
+        width: 5rem;
+        height: 5rem;
+    }
+
+    .name {
+        font-size: 1.8rem;
+    }
 }

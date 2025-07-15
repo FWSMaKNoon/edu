@@ -1,0 +1,105 @@
+//Header
+.header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 20;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 30px;
+    padding: 0 28px;
+    height: 66px;
+    border-bottom: 1px solid #e8ebed;
+    background-color: #fff;
+    font-size: 1.4rem;
+}
+
+.header__logo {
+    display: flex;
+    align-items: center;
+    white-space: nowrap;
+
+    img {
+        display: flex;
+        align-items: center;
+        width: 100px;
+        height: 100px;
+        flex-shrink: 0;
+        object-fit: contain;
+        border-radius: 8px;
+    }
+
+    a {
+        font-weight: 700;
+        font-size: 1.5rem;
+        color: #000;
+        outline: none;
+    }
+}
+
+.search-wrapper {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+}
+
+.user-regis {
+    display: flex;
+}
+
+.action {
+    display: flex;
+    align-items: center;
+}
+
+.course-btn {
+    font-size: 1.6rem;
+    font-weight: 600;
+}
+
+.user-avatar {
+    width: 32px;
+    height: 32px;
+    object-fit: cover;
+    border-radius: 50%;
+}
+
+.ml-10 {
+    margin-left: 30px;
+}
+
+/*Mobile and Tablet*/
+@media (max-width: 63.9375em) {
+    .hide-on-mobile-tablet {
+        display: none;
+    }
+
+    .search-wrapper {
+        justify-content: center;
+    }
+
+    .ml-0 {
+        margin-left: 0;
+    }
+
+    .user {
+        margin: 0 16px;
+    }
+}
+
+/*Tablet*/
+@media (min-width: 46.25em) and (max-width: 63.9375em) {
+}
+
+/*Mobile*/
+@media (max-width: 46.1875em) {
+    .hide-on-mobile {
+        display: none;
+    }
+
+    .header {
+        padding: 0 16px;
+    }
+}

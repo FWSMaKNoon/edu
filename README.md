@@ -1,39 +1,53 @@
-# 👕 Fashion Store — React Frontend
+# 📚 AI Education E-Commerce Platform (Front-End)
 
-Giao diện Frontend cho **website bán quần áo thời trang**, nơi người dùng có thể xem sản phẩm, tìm kiếm, lọc theo giá, thêm vào yêu thích, xem chi tiết sản phẩm
+Dự án Front-end mô phỏng sàn giáo dục thương mại điện tử tích hợp AI.  
+Người dùng có thể tìm kiếm, khám phá, yêu thích và xem gợi ý thông minh các khoá học hoặc tài liệu học tập.
 
 ---
 
 ## 📌 Chức năng chính
 
-✅ Hiển thị danh sách sản phẩm quần áo (áo, quần, phụ kiện, giày dép…)  
-✅ Tìm kiếm sản phẩm theo tên  
-✅ Lọc sản phẩm theo khoảng giá  
-✅ Xem chi tiết sản phẩm qua Modal (ảnh lớn, mô tả, giá, đánh giá)  
-✅ Thêm sản phẩm vào danh sách yêu thích  
-✅ Xem danh sách các sản phẩm yêu thích  
-✅ Gợi ý sản phẩm (mock API)  
-✅ Xử lý lỗi khi API bị lỗi
+-   Hiển thị danh sách khoá học từ API MockAPI
+-   Modal xem chi tiết khoá học
+-   Tìm kiếm khoá học
+-   Bộ lọc giá khoá học
+-   Yêu thích khoá học
+-   Lịch sử xem khoá học
+-   Trang riêng hiển thị sản phẩm đã yêu thích và đã xem
+-   Gợi ý khoá học dựa trên hành vi (đã thích & đã xem)
+-   Loading skeleton khi gọi API gợi ý
+-   Đăng nhập / đăng xuất (state global qua React Context API)
+-   Toast Notification
 
 ---
 
-## 📌 Mở rộng (Optional)
+## UX/UI
 
-Responsive UI cho mobile / tablet
+-   Giao diện hiện đại
+-   Hiệu ứng hover, transition mượt mà
+-   Toast notification cho hành động yêu thích / huỷ yêu thích
+-   Responsive hoàn toàn cho desktop, tablet, mobile
+
+---
+
+## Công nghệ sử dụng
+
+-   ReactJS (Vite)
+-   React Router DOM
+-   React Context API (quản lý state đăng nhập)
+-   Axios
+-   react-toastify (thông báo)
+-   Tippy.js (Popper Menu)
+-   SCSS module + classNames bind
+-   MockAPI.io (Fake API)
+-   React Skeleton Loader (cho loading gợi ý)
 
 ## 🚀 Cài đặt và chạy dự án
 
 npm install
-npm start
+npm run dev
+npm run build
 🌐 Mở trình duyệt và truy cập: http://localhost:3000
-
-## Công nghệ sử dụng
-
-⚛️ React
-⚙️ React Router DOM (routing)
-🎨 SCSS / CSS Modules (styling)
-🔥 React Toastify (thông báo)
-🧱 classnames / clsx (quản lý className)
 
 ### 1️⃣ Clone project:
 
