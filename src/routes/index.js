@@ -14,6 +14,5 @@ const publicRoutes = [
 
 //Private Routes
 const privateRoutes = [];
-<Route path="/detail/products/:id" element={<Detail />} />;
 <Route path="/favorites" element={<Favorites />} />;
 export { publicRoutes, privateRoutes };
