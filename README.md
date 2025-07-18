@@ -53,5 +53,5 @@ npm run build
 
 ```bash
 git clone https://github.com/FWSMaKNoon/edu
-Render Dashboard: https://edu-f706.onrender.com
+Netlify: https://profound-tarsier-36a87a.netlify.app/
 ```
