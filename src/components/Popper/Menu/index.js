@@ -73,7 +73,13 @@ function Menu({ children }) {
                         </div>
                         <hr />
                         <div>
-                            <Button onClick={() => (handleLogout(), handleScroll())} className={cx('menu-item')}>
+                            <Button
+                                onClick={() => {
+                                    handleLogout();
+                                    handleScroll();
+                                }}
+                                className={cx('menu-item')}
+                            >
                                 Đăng xuất
                             </Button>
                         </div>

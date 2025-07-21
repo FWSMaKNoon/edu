@@ -3,7 +3,6 @@ import classNames from 'classnames/bind';
 import styles from './ProductDetailModal.module.scss';
 import { AuthContext } from '~/contexts/AuthContext';
 import { toast, ToastContainer } from 'react-toastify';
-import { Link } from 'react-router-dom';
 import { HeartIcon, ClearIcon } from '~/layouts/components/Icons';
 import Button from '../Button';
 
