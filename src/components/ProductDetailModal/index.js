@@ -1,8 +1,11 @@
-import { useEffect } from 'react';
+import { useContext, useEffect } from 'react';
 import classNames from 'classnames/bind';
 import styles from './ProductDetailModal.module.scss';
+import { AuthContext } from '~/contexts/AuthContext';
+import { toast, ToastContainer } from 'react-toastify';
 import { Link } from 'react-router-dom';
 import { HeartIcon, ClearIcon } from '~/layouts/components/Icons';
+import Button from '../Button';
 
 const cx = classNames.bind(styles);
 
@@ -12,6 +15,8 @@ function ProductDetailModal({
     favorites = [], // gán mặc định []
     onToggleFavorite,
 }) {
+    const { currentUser } = useContext(AuthContext);
+
     useEffect(() => {
         // Khi mở modal -> chặn scroll
         document.body.style.overflow = 'hidden';
@@ -23,6 +28,23 @@ function ProductDetailModal({
     if (!data) return null;
 
     const isFav = favorites.includes(data.id);
+
+    const handleAddToCart = () => {
+        if (!currentUser) {
+            toast.error('Bạn cần đăng nhập để thêm vào giỏ hàng.');
+        } else {
+            const cartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
+            const itemIndex = cartItems.findIndex((item) => item.id === data.id);
+            if (itemIndex > -1) {
+                // Nếu đã có trong giỏ hàng, tăng số lượng
+                cartItems[itemIndex].quantity += 1;
+            } else {
+                // Nếu chưa có, thêm mới
+                cartItems.push({ ...data, quantity: 1 });
+            }
+            localStorage.setItem('cartItems', JSON.stringify(cartItems));
+        }
+    };
 
     return (
         <div className={cx('modal-overlay')} onClick={onClose}>
@@ -51,11 +73,22 @@ function ProductDetailModal({
                         </button>
                     )}
 
-                    <Link to="/cart" className={cx('btn-buy')}>
+                    <Button onClick={handleAddToCart} className={cx('btn-buy')}>
                         Đăng ký ngay
-                    </Link>
+                    </Button>
                 </div>
             </div>
+            <ToastContainer
+                position="top-right"
+                autoClose={3000}
+                hideProgressBar={false}
+                newestOnTop={false}
+                closeOnClick
+                pauseOnFocusLoss
+                draggable
+                pauseOnHover
+                theme="colored"
+            />
         </div>
     );
 }

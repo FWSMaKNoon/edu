@@ -7,7 +7,7 @@ const cx = classNames.bind(styles);
 
 function Sidebar() {
     return (
-        <div className={cx('container')}>
+        <div className={cx('container')} id="sidebar">
             <div className={cx('banner')}>
                 <div className="grid wide">
                     <div className="row">

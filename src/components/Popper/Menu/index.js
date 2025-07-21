@@ -1,3 +1,4 @@
+import { useNavigate } from 'react-router-dom';
 import { useState } from 'react';
 import classNames from 'classnames/bind';
 import Tippy from '@tippyjs/react/headless';
@@ -13,7 +14,21 @@ import { Link } from 'react-router-dom';
 const cx = classNames.bind(styles);
 function Menu({ children }) {
     const { logout } = useContext(AuthContext);
+    const navigate = useNavigate();
     const [visible, setVisible] = useState(false);
+
+    const handleScroll = () => {
+        const scrollLayout = document.getElementById('sidebar');
+        if (scrollLayout) {
+            scrollLayout.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+    };
+
+    const handleLogout = () => {
+        logout();
+        setVisible(false);
+        navigate('/');
+    };
 
     return (
         <Tippy
@@ -24,7 +39,7 @@ function Menu({ children }) {
             render={(attrs) => (
                 <div tabIndex="-1" {...attrs}>
                     <PopperWrapper className={cx('menu-wrapper')}>
-                        <Link to="/" className={cx('user')}>
+                        <Link to="/" onClick={handleScroll} className={cx('user')}>
                             <div className={cx('user-avatar')}>
                                 <div className={cx('avatar-img')}>
                                     <Image
@@ -37,22 +52,28 @@ function Menu({ children }) {
                         </Link>
                         <hr />
                         <div>
-                            <Link to="/" className={cx('menu-item')}>
+                            <Link to="/" onClick={handleScroll} className={cx('menu-item')}>
                                 Trang cá nhân
                             </Link>
                         </div>
                         <hr />
                         <div>
-                            <Link to="/favorites" className={cx('menu-item')}>
+                            <Link to="/cart" onClick={handleScroll} className={cx('menu-item')}>
+                                Giỏ hàng
+                            </Link>
+                        </div>
+                        <hr />
+                        <div>
+                            <Link to="/favorites" onClick={handleScroll} className={cx('menu-item')}>
                                 Yêu thích
                             </Link>
-                            <Link to="/view" className={cx('menu-item')}>
+                            <Link to="/view" onClick={handleScroll} className={cx('menu-item')}>
                                 Đã xem
                             </Link>
                         </div>
                         <hr />
                         <div>
-                            <Button onClick={logout} className={cx('menu-item')}>
+                            <Button onClick={() => (handleLogout(), handleScroll())} className={cx('menu-item')}>
                                 Đăng xuất
                             </Button>
                         </div>
