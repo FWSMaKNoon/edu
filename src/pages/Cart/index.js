@@ -1,67 +1,64 @@
-import classNames from 'classnames/bind';
 import { useEffect, useState } from 'react';
+import classNames from 'classnames/bind';
 import styles from './Cart.module.scss';
-import Button from '~/components/Button';
+import { toast, ToastContainer } from 'react-toastify';
 
 const cx = classNames.bind(styles);
 
 function Cart() {
     const [cartItems, setCartItems] = useState([]);
-    const [totalPrice, setTotalPrice] = useState(0);
 
     useEffect(() => {
-        // Load cart items from localStorage
-        const items = JSON.parse(localStorage.getItem('cartItems')) || [];
-        setCartItems(items);
-
-        // Calculate total price
-        const total = items.reduce((sum, item) => sum + item.price * item.quantity, 0);
-        setTotalPrice(total);
+        const storedCart = JSON.parse(localStorage.getItem('cartItems')) || [];
+        setCartItems(storedCart);
     }, []);
+
+    const handleRemove = (id) => {
+        const updated = cartItems.filter((item) => item.id !== id);
+        setCartItems(updated);
+        localStorage.setItem('cartItems', JSON.stringify(updated));
+        toast.success('Đã xoá khỏi giỏ hàng', { autoClose: 2000 });
+    };
+
+    const total = cartItems.reduce((sum, item) => sum + item.price * item.quantity, 0);
 
     return (
         <div className={cx('cart-wrapper')}>
-            <div className={cx('cart_container')}>
-                <div className={cx('grid wide')}>
-                    <h2 className={cx('cart-title')}>Giỏ hàng của bạn</h2>
-                    <div className={cx('cart-list', 'row', 'header')}>
-                        <div className={cx('col', 'l-4')}>
-                            <h4 className={cx('cart-info')}>Khoá học</h4>
-                        </div>
-                        <div className={cx('col', 'l-4')}>
-                            <h4 className={cx('cart-info')}>Tên khoá học</h4>
-                        </div>
-                        <div className={cx('col', 'l-4')}>
-                            <h4 className={cx('cart-info')}>Giá</h4>
-                        </div>
-                    </div>
-                    {cartItems.length > 0 ? (
-                        cartItems.map((item) => (
-                            <div key={item.id} className={cx('cart-item', 'row')}>
-                                <div className={cx('col', 'l-4')}>
-                                    <img src={item.image} alt={item.title} className={cx('cart-image')} />
-                                </div>
-                                <div className={cx('col', 'l-4')}>
-                                    <div className={cx('cart-info')}>{item.title}</div>
-                                </div>
-                                <div className={cx('col', 'l-4')}>
-                                    <div className={cx('cart-info')}>{item.price.toLocaleString()}đ</div>
-                                </div>
+            <h2 className={cx('cart-title')}>Giỏ hàng</h2>
+
+            {cartItems.length === 0 ? (
+                <p className={cx('empty')}>Giỏ hàng đang trống.</p>
+            ) : (
+                <div className={cx('cart-list')}>
+                    {cartItems.map((item) => (
+                        <div key={item.id} className={cx('cart-item')}>
+                            <img src={item.image} alt={item.title} className={cx('item-img')} />
+                            <div className={cx('item-info')}>
+                                <h4>{item.title}</h4>
+                                <p>Giá: {item.price === 0 ? 'Miễn phí' : item.price.toLocaleString() + 'đ'}</p>
+                                <button className={cx('remove-btn')} onClick={() => handleRemove(item.id)}>
+                                    Xoá
+                                </button>
                             </div>
-                        ))
-                    ) : (
-                        <p className={cx('empty-cart')}>Giỏ hàng của bạn trống.</p>
-                    )}
-                    {cartItems.length > 0 && (
-                        <div className={cx('total-price')}>
-                            <p>Tổng giá trị giỏ hàng: {totalPrice.toLocaleString()}đ</p>
                         </div>
-                    )}
-                    <div className={cx('total-price')}>
-                        <Button className={cx('btn-checkout')}>Thanh toán</Button>
+                    ))}
+                    <div className={cx('cart-total')}>
+                        <strong>Tổng cộng: </strong>
+                        {total === 0 ? 'Miễn phí' : total.toLocaleString() + 'đ'}
                     </div>
                 </div>
-            </div>
+            )}
+            <ToastContainer
+                position="top-right"
+                autoClose={3000}
+                hideProgressBar={false}
+                newestOnTop={false}
+                closeOnClick
+                pauseOnFocusLoss
+                draggable
+                pauseOnHover
+                theme="colored"
+            />
         </div>
     );
 }

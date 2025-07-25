@@ -34,13 +34,16 @@ function ProductDetailModal({
         } else {
             const cartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
             const itemIndex = cartItems.findIndex((item) => item.id === data.id);
+
             if (itemIndex > -1) {
                 // Nếu đã có trong giỏ hàng, tăng số lượng
-                cartItems[itemIndex].quantity += 1;
+                toast.info('Đã có trong giỏ hàng', { autoClose: 2000 });
             } else {
                 // Nếu chưa có, thêm mới
                 cartItems.push({ ...data, quantity: 1 });
+                toast.success('Đã thêm vào giỏ hàng', { autoClose: 2000 });
             }
+
             localStorage.setItem('cartItems', JSON.stringify(cartItems));
         }
     };
