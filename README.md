@@ -1,55 +1,87 @@
-# 📚 AI Education E-Commerce Platform (Front-End)
+## AI Education E-Commerce Platform (Front-End)
 
-Dự án Front-end mô phỏng sàn giáo dục thương mại điện tử tích hợp AI.  
-Người dùng có thể tìm kiếm, khám phá, yêu thích và xem gợi ý thông minh các khoá học hoặc tài liệu học tập.
+A front-end project that simulates an AI-powered educational e-commerce platform.
+Users can search, explore, favorite, and receive intelligent course recommendations based on their behavior.
 
----
+## Key Features
 
-## 📌 Chức năng chính
+Display course list from MockAPI
 
--   Hiển thị danh sách khoá học từ API MockAPI
--   Modal xem chi tiết khoá học
--   Tìm kiếm khoá học
--   Bộ lọc giá khoá học
--   Yêu thích khoá học
--   Lịch sử xem khoá học
--   Trang riêng hiển thị sản phẩm đã yêu thích và đã xem
--   Gợi ý khoá học dựa trên hành vi (đã thích & đã xem)
--   Loading skeleton khi gọi API gợi ý
--   Đăng nhập / đăng xuất (state global qua React Context API)
--   Toast Notification
+Course detail modal
 
----
+Course search functionality
+
+Price filter system
+
+Add/remove favorites
+
+View history tracking
+
+Dedicated pages for:
+
+Favorited courses
+
+Viewed courses
+
+Smart course recommendations based on user behavior (favorites & history)
+
+Skeleton loading effect for AI suggestions
+
+Login / Logout (Global state managed via React Context API)
+
+Toast notifications
 
 ## UX/UI
 
--   Giao diện hiện đại
--   Hiệu ứng hover, transition mượt mà
--   Toast notification cho hành động yêu thích / huỷ yêu thích
--   Responsive hoàn toàn cho desktop, tablet, mobile
+Modern and clean interface
 
----
+Smooth hover effects and transitions
 
-## Công nghệ sử dụng
+Toast notifications for favorite/unfavorite actions
 
--   ReactJS (Vite)
--   React Router DOM
--   React Context API (quản lý state đăng nhập)
--   Axios
--   react-toastify (thông báo)
--   Tippy.js (Popper Menu)
--   SCSS module + classNames bind
--   MockAPI.io (Fake API)
--   React Skeleton Loader (cho loading gợi ý)
+Fully responsive design (desktop, tablet, mobile)
 
-## 🚀 Cài đặt và chạy dự án
+## Tech Stack
+
+ReactJS (Vite)
+
+React Router DOM
+
+React Context API (Authentication state management)
+
+Axios
+
+react-toastify
+
+Tippy.js (Popper Menu)
+
+SCSS Modules + classNames bind
+
+MockAPI.io (Fake REST API)
+
+React Skeleton Loader (for suggestion loading state)
+## Installation & Setup
 
 npm install
 npm run dev
 npm run build
-🌐 Mở trình duyệt và truy cập: http://localhost:3000
+Open your browser and visit: http://localhost:3000
 
-### 1️⃣ Clone project:
+## Project Purpose
+
+This project was built to practice:
+
+Component-based architecture in React
+
+State management with Context API
+
+API integration using Axios
+
+Responsive UI design
+
+Simulating AI-based recommendation logic on the front-end
+
+### Clone project:
 
 ```bash
 git clone https://github.com/FWSMaKNoon/edu
